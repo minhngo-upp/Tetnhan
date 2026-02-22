@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thiết Kế Tết Của Bạn | Tết Nhàn</title>
+    <meta name="description"
+        content="Khám phá ngay gói dịch vụ Tết Nhàn phù hợp nhất với bạn chỉ qua 5 câu hỏi trắc nghiệm đơn giản.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <style>
+        .quiz-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+        }
+
+        .quiz-header {
+            background: var(--primary-red);
+            color: var(--white);
+            padding: var(--spacing-lg);
+            text-align: center;
+        }
+
+        .quiz-body {
+            padding: var(--spacing-xl);
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .quiz-question {
+            font-size: 1.5rem;
+            font-family: var(--font-heading);
+            color: var(--primary-red);
+            margin-bottom: var(--spacing-lg);
+            text-align: center;
+            display: none;
+        }
+
+        .quiz-question.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .quiz-options {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-sm);
+        }
+
+        .quiz-option {
+            background: var(--bg-cream);
+            border: 2px solid transparent;
+            padding: 1rem;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            font-weight: 500;
+            transition: all var(--transition-fast);
+            text-align: center;
+        }
+
+        .quiz-option:hover {
+            background: var(--white);
+            border-color: var(--primary-gold);
+            transform: translateY(-2px);
+        }
+
+        .quiz-option.selected {
+            background: var(--white);
+            border-color: var(--primary-gold);
+            box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
+        }
+
+        .quiz-footer {
+            padding: var(--spacing-md) var(--spacing-xl);
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            height: 8px;
+            background: var(--bg-cream);
+            border-radius: 4px;
+            margin-top: var(--spacing-sm);
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: var(--primary-gold);
+            width: 20%;
+            transition: width 0.3s ease;
+        }
+
+        /* Result styling */
+        #quiz-result {
+            display: none;
+            text-align: center;
+        }
+
+        #quiz-result.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .result-card {
+            background: var(--bg-cream);
+            border: 1px solid var(--primary-gold);
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-lg);
+            margin-top: var(--spacing-md);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body style="background-color: var(--bg-cream);">
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container nav-container">
+            <nav class="nav-menu" style="flex: 1; justify-content: flex-end; gap: var(--spacing-md);">
+                <a href="index.html" class="nav-link">Trang Chủ</a>
+                <a href="services.html" class="nav-link">Dịch Vụ</a>
+                <a href="quiz.html" class="nav-link active">Thiết Kế Tết</a>
+            </nav>
+
+            <a href="index.html" class="logo" style="flex: 1; text-align: center;">
+                TẾT NHÀN
+                <span>Cá nhân hóa</span>
+            </a>
+
+            <nav class="nav-menu" style="flex: 1; justify-content: flex-start; gap: var(--spacing-md);">
+                <div class="nav-item-dropdown">
+                    <a href="#" class="nav-link">Về Thương Hiệu</a>
+                    <div class="dropdown-menu">
+                        <a href="about.html" class="dropdown-item">Câu Chuyện Nghề</a>
+                        <a href="blog.html" class="dropdown-item">Góc Nhàn</a>
+                    </div>
+                </div>
+                <a href="booking.html" class="nav-link" style="color: var(--primary-red); font-weight: 600;">Liên Hệ</a>
+            </nav>
+
+            <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
+        </div>
+    </header>
+
+    <main style="padding-top: 100px; padding-bottom: var(--spacing-xxl);">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Chỉ mất 1 phút</span>
+                <h2>Thiết kế Tết của riêng bạn</h2>
+                <p style="max-width: 600px; margin: 0 auto;">Trả lời 5 câu hỏi nhanh để tìm ra giải pháp Tết Nhàn phù
+                    hợp nhất với mong muốn của bạn trong dịp Tết này.</p>
+            </div>
+
+            <div class="quiz-container">
+                <div class="quiz-header">
+                    <h3 style="color: var(--white); margin: 0; font-size: 1.5rem;" id="quiz-title">Câu 1/5</h3>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" id="progress-bar"></div>
+                    </div>
+                </div>
+
+                <div class="quiz-body">
+                    <!-- Intro -->
+                    <div id="quiz-intro" class="quiz-question active">
+                        <h3 style="font-size: 2rem;">Sẵn sàng tìm lại cái Tết thảnh thơi?</h3>
+                        <p
+                            style="color: var(--text-light); font-family: var(--font-body); font-size: 1rem; margin-top: var(--spacing-sm);">
+                            Không còn tất bật, chỉ còn sum vầy. Bắt đầu ngay!</p>
+                        <button class="btn btn-primary" id="btn-start" style="margin-top: var(--spacing-lg);">Bắt đầu
+                            trả lời</button>
+                    </div>
+
+                    <!-- Question 1 -->
+                    <div id="q1" class="quiz-question">
+                        Q1: Gia đình bạn có khoảng bao nhiêu người sẽ ăn Tết cùng nhau?
+                        <div class="quiz-options" style="margin-top: var(--spacing-md); font-family: var(--font-body);">
+                            <div class="quiz-option" data-value="small" data-q="1">1-3 người (Gia đình nhỏ)</div>
+                            <div class="quiz-option" data-value="medium" data-q="1">4-6 người (Gia đình tiêu chuẩn)
+                            </div>
+                            <div class="quiz-option" data-value="large" data-q="1">Trên 7 người (Đại gia đình)</div>
+                            <div class="quiz-option" data-value="business" data-q="1">Tôi đại diện cho Doanh nghiệp/Công
+                                ty</div>
+                        </div>
+                    </div>
+
+                    <!-- Question 2 -->
+                    <div id="q2" class="quiz-question">
+                        Q2: Kế hoạch của bạn trong dịp Tết này là gì?
+                        <div class="quiz-options" style="margin-top: var(--spacing-md); font-family: var(--font-body);">
+                            <div class="quiz-option" data-value="home" data-q="2">Đón Tết tại nhà, quây quần bên mâm cơm
+                            </div>
+                            <div class="quiz-option" data-value="hometown" data-q="2">Về quê dài ngày (Trên 3 ngày)
+                            </div>
+                            <div class="quiz-option" data-value="travel" data-q="2">Đi du lịch du xuân dài ngày</div>
+                        </div>
+                    </div>
+
+                    <!-- Question 3 -->
+                    <div id="q3" class="quiz-question">
+                        Q3: Bạn có dự định tiếp đón nhiều khách hoặc đối tác tại nhà không?
+                        <div class="quiz-options" style="margin-top: var(--spacing-md); font-family: var(--font-body);">
+                            <div class="quiz-option" data-value="no" data-q="3">Không, chỉ anh em họ hàng thân thiết
+                            </div>
+                            <div class="quiz-option" data-value="yes" data-q="3">Có, nhiều bạn bè và đối tác quan trọng
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 4 -->
+                    <div id="q4" class="quiz-question">
+                        Q4: Ngân sách dự kiến cho việc thuê dịch vụ hỗ trợ Tết?
+                        <div class="quiz-options" style="margin-top: var(--spacing-md); font-family: var(--font-body);">
+                            <div class="quiz-option" data-value="low" data-q="4">Dưới 5 triệu (Cơ bản gọn nhẹ)</div>
+                            <div class="quiz-option" data-value="med" data-q="4">5 triệu - 10 triệu (Tiêu chuẩn, đầy đủ)
+                            </div>
+                            <div class="quiz-option" data-value="high" data-q="4">Trên 10 triệu (Cao cấp, đặc quyền)
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 5 -->
+                    <div id="q5" class="quiz-question">
+                        Q5: Mong muốn lớn nhất của bạn trong dịp Tết này là gì?
+                        <div class="quiz-options" style="margin-top: var(--spacing-md); font-family: var(--font-body);">
+                            <div class="quiz-option" data-value="relax" data-q="5">Ngơi nghỉ hoàn toàn, nhẹ lo toan
+                            </div>
+                            <div class="quiz-option" data-value="traditional" data-q="5">Trọn vẹn nghi lễ tâm linh
+                                truyền thống</div>
+                            <div class="quiz-option" data-value="luxury" data-q="5">Riêng tư, sang trọng, có người phục
+                                vụ chuẩn sao</div>
+                            <div class="quiz-option" data-value="safe" data-q="5">Giữ an toàn nhà cửa, thú cưng khi vắng
+                                nhà</div>
+                        </div>
+                    </div>
+
+                    <!-- Result -->
+                    <div id="quiz-result">
+                        <h2 style="color: var(--primary-gold);">Tuyệt vời! Chúng tôi đã tìm ra giải pháp cho bạn</h2>
+                        <p>Dựa trên câu trả lời, đây là lựa chọn hoàn hảo nhất để Tết này của bạn thực sự là "Tết Nhàn":
+                        </p>
+
+                        <div class="result-card">
+                            <span class="badge"
+                                style="background: var(--primary-gold); color: var(--primary-red); margin-bottom: var(--spacing-sm);">Gợi
+                                ý hàng đầu</span>
+                            <h3 id="result-title" style="font-size: 2rem; margin-bottom: 0.5rem;">Tết Nhàn Family
+                                (Premium)</h3>
+                            <p id="result-desc" style="font-size: 1.1rem; margin-bottom: var(--spacing-md);">Tổng vệ
+                                sinh nhà cửa, trang trí mai đào và mâm cỗ Tât niên 6 món. Phù hợp cho gia đình tiêu
+                                chuẩn muốn đón Tết tại nhà.</p>
+                            <div class="flex justify-center gap-sm">
+                                <a href="#" id="result-link" class="btn btn-primary">Đặt dịch vụ ngay</a>
+                                <button class="btn btn-outline-gold" id="btn-restart">Làm lại</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quiz-footer" id="quiz-controls" style="display: none;">
+                    <button class="btn btn-secondary" id="btn-prev" disabled>Quay lại</button>
+                    <button class="btn btn-primary" id="btn-next" disabled>Tiếp theo</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom" style="margin-top: 0; border-top: none;">
+                <p>&copy; 2026 Tết Nhàn.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/quiz.js"></script>
+</body>
+
+</html>

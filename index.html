@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tết Nhàn - Gìn Giữ Nét Xuân Viên Mãn</title>
+
+  <meta name="description"
+    content="Concierge Tết cao cấp dành riêng cho Doanh nhân và Gia đình tinh hoa. Mang đến cái Tết riêng tư, tinh tế và trọn vẹn bề thế.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap"
+    rel="stylesheet">
+
+  <!-- CSS Styles -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+
+  <style>
+    /* Specific Home Styles for redesign */
+    .hero-fullscreen {
+      height: 100vh;
+      min-height: 700px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--white);
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('images/tet_hero_bg_1771730622720.png') center/cover no-repeat;
+      z-index: -2;
+      animation: zoomSlow 20s infinite alternate linear;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(139, 30, 45, 0.6));
+      z-index: -1;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      padding: 0 var(--spacing-md);
+      animation: fadeUp 1.5s ease;
+    }
+
+    .hero-subtitle {
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: var(--spacing-md);
+      display: block;
+    }
+
+    .hero-title {
+      color: var(--white);
+      font-size: clamp(3rem, 6vw, 5rem);
+      margin-bottom: var(--spacing-md);
+      line-height: 1.1;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: var(--white);
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      opacity: 0.8;
+      animation: bounce 2s infinite;
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background-color: rgba(255, 255, 255, 0.5);
+    }
+
+    .intro-section {
+      background-color: var(--white);
+      text-align: center;
+      padding: var(--spacing-xxl) 0;
+    }
+
+    .intro-text {
+      font-family: var(--font-heading);
+      font-size: 1.8rem;
+      line-height: 1.6;
+      color: var(--text-dark);
+      max-width: 900px;
+      margin: 0 auto;
+      font-style: italic;
+    }
+
+    .collection-section {
+      background-color: var(--bg-cream);
+      padding: var(--spacing-xxl) 0;
+    }
+
+    @keyframes zoomSlow {
+      0% {
+        transform: scale(1);
+      }
+
+      100% {
+        transform: scale(1.1);
+      }
+    }
+
+    @keyframes fadeUp {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes bounce {
+
+      0%,
+      20%,
+      50%,
+      80%,
+      100% {
+        transform: translateY(0) translateX(-50%);
+      }
+
+      40% {
+        transform: translateY(-10px) translateX(-50%);
+      }
+
+      60% {
+        transform: translateY(-5px) translateX(-50%);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header / Navigation (Centered elegant style) -->
+  <header class="header">
+    <div class="container nav-container">
+      <!-- Left Nav -->
+      <nav class="nav-menu" style="flex: 1; justify-content: flex-end; gap: var(--spacing-md);">
+        <a href="index.html" class="nav-link active">Trang Chủ</a>
+        <a href="services.html" class="nav-link">Dịch Vụ</a>
+        <a href="quiz.html" class="nav-link">Thiết Kế Tết</a>
+      </nav>
+
+      <!-- Center Logo -->
+      <a href="index.html" class="logo" style="flex: 1; text-align: center;">
+        TẾT NHÀN
+        <span>Gìn giữ nét xuân</span>
+      </a>
+
+      <!-- Right Nav -->
+      <nav class="nav-menu" style="flex: 1; justify-content: flex-start; gap: var(--spacing-md);">
+        <div class="nav-item-dropdown">
+          <a href="#" class="nav-link">Về Thương Hiệu</a>
+          <div class="dropdown-menu">
+            <a href="about.html" class="dropdown-item">Câu Chuyện Nghề</a>
+            <a href="blog.html" class="dropdown-item">Góc Nhàn</a>
+          </div>
+        </div>
+        <a href="booking.html" class="nav-link" style="color: var(--primary-red); font-weight: 600;">Liên Hệ</a>
+      </nav>
+
+      <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Elegant Fullscreen Hero -->
+    <section class="hero-fullscreen">
+      <div class="hero-bg"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <span class="hero-subtitle">Concierge Tết Cao Cấp</span>
+        <h1 class="hero-title">Đừng để Tết bận rộn<br>đánh cắp phút giây sum vầy.</h1>
+        <p
+          style="color: rgba(255,255,255,0.9); font-size: 1.1rem; max-width: 600px; margin: 0 auto var(--spacing-xl); font-weight: 300;">
+          Chỉ phục vụ giới hạn 50 gia đình mỗi dịp Xuân về. Mọi khâu chuẩn bị, trang hoàng và mâm cỗ được các chuyên gia
+          và nghệ nhân 5 sao của chúng tôi chăm chút tỉ mỉ, bảo mật tuyệt đối.
+        </p>
+        <a href="booking.html" class="btn btn-outline"
+          style="border-color: var(--primary-gold); color: var(--primary-gold);">
+          Đặt Lịch Tư Vấn Riêng <span class="arrow">→</span>
+        </a>
+        <p style="margin-top: 20px; font-size: 0.85rem; color: #ccc; font-style: italic;">Chỉ còn nhận 12/50 suất năm
+          2026</p>
+      </div>
+
+      <a href="#intro" class="scroll-indicator">
+        Khám Phá
+        <div class="scroll-line"></div>
+      </a>
+    </section>
+
+    <!-- Target Audience (Ai nên sử dụng) -->
+    <section class="section" style="background-color: var(--white);">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle">Chân Dung Khách Hàng</span>
+          <h2>Tết Nhàn Mang Lại Điều Gì Cho Bạn?</h2>
+          <div class="heading-decorator"></div>
+        </div>
+
+        <div class="grid grid-cols-3 md:grid-cols-1 gap-lg text-center" style="margin-top: var(--spacing-lg);">
+          <!-- Card 1 -->
+          <div
+            style="padding: var(--spacing-lg); border: 1px solid var(--border-color); display: flex; flex-direction: column; justify-content: center;">
+            <h3
+              style="color: var(--primary-red); font-size: 1.4rem; line-height: 1.5; margin-bottom: 15px; font-family: var(--font-heading);">
+              Toàn quyền giao phó<br>&ndash; tuyệt đối yên tâm.</h3>
+            <p style="color: var(--text-light); font-size: 0.95rem; line-height: 1.6;">Thời gian được giữ trọn cho gia
+              đình và những quyết định quan trọng cuối năm.</p>
+          </div>
+          <!-- Card 2 -->
+          <div
+            style="padding: var(--spacing-lg); border: 1px solid var(--primary-gold); background: var(--bg-cream); display: flex; flex-direction: column; justify-content: center;">
+            <h3
+              style="color: var(--text-dark); font-size: 1.4rem; line-height: 1.5; margin-bottom: 15px; font-family: var(--font-heading);">
+              Giữ trọn truyền thống<br>&ndash; không còn áp lực.</h3>
+            <p style="color: var(--text-light); font-size: 0.95rem; line-height: 1.6;">Giữ trọn văn hóa gia đình, không
+              còn căng thẳng hay mệt mỏi vì công việc bề bộn.</p>
+          </div>
+          <!-- Card 3 -->
+          <div
+            style="padding: var(--spacing-lg); border: 1px solid var(--border-color); display: flex; flex-direction: column; justify-content: center;">
+            <h3
+              style="color: var(--primary-red); font-size: 1.4rem; line-height: 1.5; margin-bottom: 15px; font-family: var(--font-heading);">
+              Tinh tế từng chi tiết<br>&ndash; nhẹ nhàng từng khoảnh khắc.</h3>
+            <p style="color: var(--text-light); font-size: 0.95rem; line-height: 1.6;">Bạn hoàn toàn tận hưởng không khí
+              Xuân thay vì vất vả chuẩn bị cho nó.</p>
+          </div>
+        </div>
+
+        <div class="text-center" style="margin-top: var(--spacing-xl);">
+          <a href="booking.html" class="btn btn-outline"
+            style="color: var(--primary-red); border-color: var(--primary-red);">Tư vấn riêng cho gia đình bạn <span
+              class="arrow">→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Problem vs Solution (Vấn đề và Giải pháp) -->
+    <section id="intro" class="intro-section" style="background-color: var(--bg-cream);">
+      <div class="container">
+        <div class="grid grid-cols-2 md:grid-cols-1 gap-xl items-center">
+          <div>
+            <h2 style="font-size: 2.5rem; line-height: 1.2; margin-bottom: var(--spacing-md); text-align: left;">Cái giá
+              của việc<br><span style="color: var(--primary-red);">Tự chuẩn bị Tết</span></h2>
+            <ul style="list-style: none; padding: 0; text-align: left; font-size: 1.1rem; color: var(--text-light);">
+              <li style="margin-bottom: var(--spacing-sm);">❌ <strong>Mất hàng chục giờ đồng hồ</strong> để dọn dẹp và
+                mua sắm chen chúc.</li>
+              <li style="margin-bottom: var(--spacing-sm);">❌ <strong>Căng thẳng (Stress) mệt mỏi</strong> đánh mất niềm
+                vui sum vầy.</li>
+              <li style="margin-bottom: var(--spacing-sm);">❌ <strong>Thiếu sự chuyên nghiệp</strong> trong việc bài trí
+                hoa nghệ thuật hay mâm cỗ thiết đãi khách quý.</li>
+              <li style="margin-bottom: var(--spacing-sm);">❌ <strong>Phát sinh rủi ro</strong> hư hỏng đồ thủ công/nội
+                thất cao cấp do dọn dẹp sai cách.</li>
+            </ul>
+          </div>
+          <div
+            style="background: var(--white); padding: var(--spacing-lg); border-top: 4px solid var(--primary-gold); box-shadow: var(--shadow-sm); text-align: left;">
+            <span class="section-subtitle" style="display: block; margin-bottom: var(--spacing-md);">Đặc Quyền Concierge
+              Tết Nhàn</span>
+            <p
+              style="font-family: var(--font-heading); font-size: 1.4rem; color: var(--text-dark); line-height: 1.6; font-style: italic;">
+              "Dịch vụ Tết Nhàn biến khoảng thời gian hỗn loạn nhất trong năm thành đặc quyền nghỉ dưỡng ngay tại tư
+              gia. Cam kết bảo mật, rieng tư và 100% đúng tiến độ với đội ngũ nghệ nhân/quản gia tinh hoa thực thụ."
+            </p>
+          </div>
+        </div>
+
+        <img src="images/tet_intro_art_1771730642642.png" alt="Không gian Tết" loading="lazy"
+          style="width: 100%; max-width: 1000px; margin: var(--spacing-xl) auto 0; aspect-ratio: 16/9; object-fit: cover;">
+      </div>
+    </section>
+
+    <!-- Services Collection (Art Gallery Style) -->
+    <section class="collection-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle">Bộ Sưu Tập</span>
+          <h2>Dịch Vụ Điển Hình</h2>
+          <div class="heading-decorator"></div>
+        </div>
+
+        <div class="grid grid-cols-3 md:grid-cols-1 gap-lg">
+          <!-- Item 1 -->
+          <a href="services.html#family" class="product-card">
+            <div class="product-image-container">
+              <span class="product-badge">Top Service</span>
+              <img src="images/tet_family_service_1771730659706.png" alt="Gia Đình Premium" class="product-img">
+            </div>
+            <div class="product-category">Biến Ngôi Nhà Thành Không Gian 5 Sao</div>
+            <h3 class="product-title">Gia Đình Premium</h3>
+            <p class="product-desc">Nhà cửa thơm gọn rạng rỡ, mâm cỗ dâng gia tiên chuẩn vị hoàng gia sẵn sàng không
+              gian tiếp khách cao cấp.</p>
+          </a>
+
+          <!-- Item 2 -->
+          <a href="services.html#elite" class="product-card">
+            <div class="product-image-container">
+              <span class="product-badge" style="background-color: var(--text-dark);">Limited (Mỗi năm 5 xuất)</span>
+              <img src="images/tet_elite_service_1771730705463.png" alt="Doanh Nhân Elite" class="product-img">
+            </div>
+            <div class="product-category">Có trợ lý & Quản gia riêng</div>
+            <h3 class="product-title">Doanh Nhân Elite</h3>
+            <p class="product-desc">Giải quyết vẹn toàn khối lượng việc nhà khổng lồ, bao gồm cả Chef xịn phục vụ VIP
+              tại gia.</p>
+          </a>
+
+          <!-- Item 3 -->
+          <a href="services.html#tinh-te" class="product-card">
+            <div class="product-image-container">
+              <img src="images/tet_testimonial_1771730741827.png" alt="Tết Tinh Tế" class="product-img">
+            </div>
+            <div class="product-category">Điểm nhấn nghệ thuật</div>
+            <h3 class="product-title">Tết Tinh Tế</h3>
+            <p class="product-desc">Cắm hoa nghệ thuật phong thủy, quà biếu VIP và những chi tiết chắt lọc nhất từ tay
+              nghệ nhân.</p>
+          </a>
+        </div>
+
+        <div class="text-center" style="margin-top: var(--spacing-xl);">
+          <a href="booking.html" class="btn btn-primary" style="margin-right: 15px;">Đặt Lịch Tư Vấn Riêng</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cam Kết 5 Sao -->
+    <section class="section" style="background-color: var(--bg-dark); color: var(--white);">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle" style="color: var(--primary-gold);">Chính Sách Đặc Quyền</span>
+          <h2 style="color: var(--white);">Cam Kết Của Tết Nhàn</h2>
+          <div class="heading-decorator" style="background-color: var(--primary-gold);"></div>
+        </div>
+        <div class="grid grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-md text-center">
+          <div style="padding: var(--spacing-sm); border: 1px solid rgba(255,255,255,0.1);">
+            <h3 style="color: var(--primary-gold); font-size: 1.25rem;">100% Đúng Hẹn</h3>
+            <p style="font-size: 0.9rem; color: #ccc;">Đảm bảo mọi hạng mục hoàn thiện chính xác thời gian đã thỏa
+              thuận, không chậm trễ.</p>
+          </div>
+          <div style="padding: var(--spacing-sm); border: 1px solid rgba(255,255,255,0.1);">
+            <h3 style="color: var(--primary-gold); font-size: 1.25rem;">Trọn Gói - Không Phát Sinh</h3>
+            <p style="font-size: 0.9rem; color: #ccc;">Giá trị hợp đồng là giá trị cuối cùng. Khách hàng không cần lo
+              lắng chi phí ẩn.</p>
+          </div>
+          <div style="padding: var(--spacing-sm); border: 1px solid rgba(255,255,255,0.1);">
+            <h3 style="color: var(--primary-gold); font-size: 1.25rem;">Bảo Mật Tuyệt Đối</h3>
+            <p style="font-size: 0.9rem; color: #ccc;">Ký kết NDA rõ ràng. Hình ảnh tư gia và gia đình được bảo mật an
+              toàn 100%.</p>
+          </div>
+          <div style="padding: var(--spacing-sm); border: 1px solid rgba(255,255,255,0.1);">
+            <h3 style="color: var(--primary-gold); font-size: 1.25rem;">Hoàn Tiền Nếu Sai Sót</h3>
+            <p style="font-size: 0.9rem; color: #ccc;">Sẵn sàng hoàn tiền nếu chất lượng mâm cỗ hoặc không gian không
+              phản ánh đúng cam kết.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials (Elegant Quote Style) -->
+    <section class="section" style="background-color: var(--white);">
+      <div class="container">
+        <div class="grid grid-cols-2 md:grid-cols-1 gap-xl items-center">
+          <div>
+            <img src="images/tet_testimonial_1771730741827.png" alt="Nghệ nhân cắm hoa" loading="lazy"
+              style="width: 100%; height: 600px; object-fit: cover;">
+          </div>
+          <div>
+            <span class="section-subtitle">Họ Nói Gì Về Tết Nhàn</span>
+            <h2 style="margin-bottom: var(--spacing-lg);">Sự Hài Lòng<br>Của Khách Hàng</h2>
+
+            <div
+              style="border-left: 1px solid var(--border-color); padding-left: var(--spacing-md); margin-bottom: var(--spacing-lg);">
+              <p
+                style="font-family: var(--font-heading); font-size: 1.25rem; font-style: italic; color: var(--text-dark);">
+                "Sự tỉ mỉ và tinh tế trong từng cánh hoa mai cắm ngày mùng 1 đã khiến đại gia đình chúng tôi thực sự bất
+                ngờ. Năm nay vợ chồng tôi được cùng các con ngồi xem Táo Quân trọn vẹn chứ không tất tả giặt rèm quét
+                nhà đến 30 tết nữa."
+              </p>
+              <p
+                style="margin-top: var(--spacing-sm); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; color: var(--primary-red); font-weight: 600;">
+                — Chị Bích Loan, Quận 2</p>
+            </div>
+
+            <div style="border-left: 1px solid var(--border-color); padding-left: var(--spacing-md);">
+              <p
+                style="font-family: var(--font-heading); font-size: 1.25rem; font-style: italic; color: var(--text-dark);">
+                "Hộp quà doanh nghiệp thiết kế đẹp đến mức đối tác nước ngoài đánh giá rất cao văn hóa công ty. Tiệc Tân
+                niên setup rất sang."
+              </p>
+              <p
+                style="margin-top: var(--spacing-sm); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; color: var(--primary-red); font-weight: 600;">
+                — Anh Quang Minh, CEO Công ty Tech</p>
+            </div>
+
+            <div style="margin-top: var(--spacing-lg);">
+              <a href="booking.html" class="btn btn-primary">Đặt Lịch Nhận Tư Vấn <span class="arrow">→</span></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Numbers / Trust -->
+        <div class="grid grid-cols-3 md:grid-cols-1 gap-md text-center"
+          style="margin-top: var(--spacing-xl); padding-top: var(--spacing-lg); border-top: 1px solid var(--border-color);">
+          <div>
+            <h3
+              style="color: var(--primary-gold); font-size: 2.5rem; margin-bottom: 5px; font-family: var(--font-heading);">
+              120+</h3>
+            <p style="font-weight: 500; font-size: 0.95rem; text-transform: uppercase;">Gia đình phục vụ năm qua</p>
+          </div>
+          <div>
+            <h3
+              style="color: var(--primary-gold); font-size: 2.5rem; margin-bottom: 5px; font-family: var(--font-heading);">
+              100%</h3>
+            <p style="font-weight: 500; font-size: 0.95rem; text-transform: uppercase;">Khách hàng phản hồi xuất sắc</p>
+          </div>
+          <div>
+            <h3
+              style="color: var(--primary-gold); font-size: 2.5rem; margin-bottom: 5px; font-family: var(--font-heading);">
+              5+ NĂM</h3>
+            <p style="font-weight: 500; font-size: 0.95rem; text-transform: uppercase;">Kinh nghiệm nội quản gia cấp cao
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lead Magnet / CTA -->
+    <section class="section" style="background-color: var(--bg-cream);">
+      <div class="container text-center"
+        style="max-width: 700px; margin: 0 auto; background: var(--white); padding: var(--spacing-xl); border: 1px solid var(--primary-gold);">
+        <h2 style="font-size: 2rem;">Tư Vấn Thiết Kế Tết Riêng (15 Phút Miễn Phí)</h2>
+        <p style="margin-bottom: var(--spacing-lg); color: var(--text-light);">Đội ngũ chuyên gia của chúng tôi sẵn sàng
+          lắng nghe mọi yêu cầu đặc biệt của gia đình bạn để lên phương án setup Xuân hoàn mỹ nhất.</p>
+
+        <form style="display: flex; flex-direction: column; gap: 15px;">
+          <input type="text" placeholder="Họ và Tên"
+            style="padding: 15px; border: 1px solid var(--border-color); width: 100%; font-family: var(--font-body);">
+          <input type="tel" placeholder="Số điện thoại Zalo/Viber"
+            style="padding: 15px; border: 1px solid var(--border-color); width: 100%; font-family: var(--font-body);">
+          <button type="button" class="btn btn-primary" style="width: 100%; font-size: 1.1rem;">Nhận Tư Vấn Của Chuyên
+            Gia</button>
+        </form>
+        <p style="font-size: 0.75rem; color: #999; margin-top: 15px;">Thông tin của quý khách được bảo mật hoàn toàn.
+        </p>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section" style="background-color: var(--white);">
+      <div class="container" style="max-width: 800px; margin: 0 auto;">
+        <div class="section-header text-center">
+          <span class="section-subtitle">Hỏi Đáp</span>
+          <h2>Câu Hỏi Thường Gặp</h2>
+          <div class="heading-decorator"></div>
+        </div>
+
+        <div style="margin-top: var(--spacing-lg); display: flex; flex-direction: column; gap: var(--spacing-md);">
+          <div style="border-bottom: 1px solid var(--border-color); padding-bottom: var(--spacing-md);">
+            <h3 style="font-size: 1.15rem; color: var(--text-dark); margin-bottom: 5px;">Dịch vụ có đảm bảo an toàn cho
+              đồ nội thất cao cấp không?</h3>
+            <p style="color: var(--text-light); font-size: 0.95rem; line-height: 1.6;">Khẳng định 100%. Đội ngũ
+              Housekeeping của chúng tôi được đào tạo để xử lý các bề mặt bằng dung dịch chuyên dụng. Sẽ có Quản gia
+              giám sát toàn bộ quy trình tại tư gia.</p>
+          </div>
+          <div style="border-bottom: 1px solid var(--border-color); padding-bottom: var(--spacing-md);">
+            <h3 style="font-size: 1.15rem; color: var(--text-dark); margin-bottom: 5px;">Làm sao để biết tôi hợp với Gói
+              Gia Đình Premium hay Doanh Nhân Elite?</h3>
+            <p style="color: var(--text-light); font-size: 0.95rem; line-height: 1.6;">Gói Elite được thiết kế riêng nếu
+              gia đình có khối lượng công việc khổng lồ, cần Chef phục vụ nấu tiệc xuyên suốt và đặc biệt yêu cầu bảo
+              mật thông tin nội bộ (ký NDA).</p>
+          </div>
+          <div style="border-bottom: 1px solid var(--border-color); padding-bottom: var(--spacing-md);">
+            <h3 style="font-size: 1.15rem; color: var(--text-dark); margin-bottom: 5px;">Khi nào là thời điểm tốt nhất
+              để chốt lịch?</h3>
+            <p style="color: var(--text-light); font-size: 0.95rem; line-height: 1.6;">Tết Nhàn chỉ phục vụ tối đa 50
+              gia đình mỗi năm để đảm bảo chất lượng tinh xảo nhất. Quý khách vui lòng đặt lịch trước ngày 15 Tháng Chạp
+              (Âm Lịch) để chúng tôi giữ chỗ.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Elegant Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="grid grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-xl">
+        <div style="grid-column: span 1;">
+          <a href="index.html" class="logo footer-logo">
+            TẾT NHÀN
+          </a>
+          <p style="font-size: 0.85rem; line-height: 1.8; margin-top: var(--spacing-md);">Hệ sinh thái dịch vụ Tết thủ
+            công, tinh xảo và sang trọng, nơi gìn giữ hồn Việt cho từng nếp nhà.</p>
+        </div>
+
+        <div>
+          <h4>Dịch Vụ</h4>
+          <ul>
+            <li><a href="services.html#family">Gói Gia Đình</a></li>
+            <li><a href="services.html#business">Gói Doanh Nghiệp</a></li>
+            <li><a href="services.html#elite">Gói Đặc Quyền VIP</a></li>
+            <li><a href="services.html#care">Chăm Sóc & Lưu Trú</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Truyền Thông</h4>
+          <ul>
+            <li><a href="blog.html">Câu Chuyện Nghề</a></li>
+            <li><a href="about.html">Tâm Huyết & Con Người</a></li>
+            <li><a href="about.html">Báo Chí Nói Gì</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Liên Hệ</h4>
+          <p style="margin-bottom: 0.5rem; font-size: 0.85rem;">Phòng Chăm Sóc Khách Hàng</p>
+          <p
+            style="color: var(--primary-gold); font-size: 1.25rem; font-family: var(--font-heading); margin-bottom: 1rem;">
+            1900.888.999</p>
+          <p style="font-size: 0.85rem;">info@tetnhan.vn</p>
+          <p style="font-size: 0.85rem;">Quận 1, TP. Hồ Chí Minh</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Tết Nhàn. Gìn Giữ Nét Xuân Viên Mãn.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,278 @@
+:root {
+  /* Brand Colors - Quat Tu Tam Style */
+  --primary-red: #8B1E2D;
+  /* Deep elegant red / maroon */
+  --primary-gold: #D4AF37;
+  /* Metallic gold */
+  --bg-cream: #FDFCF0;
+  /* Very light, warm off-white (paper-like) */
+  --bg-dark: #1A1A1A;
+
+  /* Neutral Colors */
+  --text-dark: #222222;
+  --text-light: #555555;
+  --white: #FFFFFF;
+  --border-color: #EAE6DF;
+
+  /* Typography */
+  /* Using Playfair Display for Serifs (Headings) and Inter for crisp Sans-serif body */
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-body: 'Inter', Helvetica, Arial, sans-serif;
+
+  /* Spacing - Increased significantly for more "breathing room" (luxury art gallery feel) */
+  --spacing-xs: 0.75rem;
+  /* 12px */
+  --spacing-sm: 1.5rem;
+  /* 24px */
+  --spacing-md: 2.5rem;
+  /* 40px */
+  --spacing-lg: 4rem;
+  /* 64px */
+  --spacing-xl: 6rem;
+  /* 96px */
+  --spacing-xxl: 10rem;
+  /* 160px */
+
+  /* Border Radius - Very minimal/sharp for elegance */
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 8px;
+
+  /* Shadows - Very subtle / almost flat */
+  --shadow-sm: 0 4px 20px rgba(0, 0, 0, 0.03);
+  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.05);
+
+  /* Transitions */
+  --transition-fast: 0.3s ease;
+  --transition-normal: 0.5s ease-in-out;
+}
+
+/* CSS Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--white);
+  /* Changed to stark white for the elegant contrast */
+  color: var(--text-dark);
+  line-height: 1.9;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography Base */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  color: var(--text-dark);
+  line-height: 1.4;
+  margin-bottom: var(--spacing-sm);
+  font-weight: 500;
+  /* Lighter weight for elegance */
+}
+
+h1 {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  letter-spacing: -1px;
+}
+
+h2 {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  letter-spacing: -0.5px;
+}
+
+h3 {
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+h4 {
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+}
+
+/* Decorative line below headings */
+.heading-decorator {
+  display: block;
+  width: 40px;
+  height: 2px;
+  background-color: var(--primary-gold);
+  margin: var(--spacing-sm) auto var(--spacing-md);
+}
+
+.heading-decorator.left {
+  margin-left: 0;
+}
+
+p {
+  margin-bottom: var(--spacing-sm);
+  color: var(--text-light);
+  font-size: 1.05rem;
+  /* Slightly larger for readability */
+}
+
+a {
+  color: var(--text-dark);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--primary-red);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Layout Utilities */
+.container {
+  width: 100%;
+  max-width: 1300px;
+  /* Wider container */
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+.section {
+  padding: var(--spacing-xxl) 0;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: var(--spacing-xxl);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section-subtitle {
+  font-family: var(--font-body);
+  color: var(--primary-red);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  display: block;
+  margin-bottom: var(--spacing-xs);
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* Flexbox & Grid */
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.gap-sm {
+  gap: var(--spacing-sm);
+}
+
+.gap-md {
+  gap: var(--spacing-md);
+}
+
+.gap-lg {
+  gap: var(--spacing-lg);
+}
+
+.grid {
+  display: grid;
+}
+
+.grid-cols-1 {
+  grid-template-columns: repeat(1, 1fr);
+}
+
+.grid-cols-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-cols-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-cols-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+@media (max-width: 1024px) {
+  .md\:grid-cols-1 {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .md\:grid-cols-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .sm\:grid-cols-1 {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .section {
+    padding: var(--spacing-lg) 0;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 8vw, 2.5rem);
+  }
+
+  h2 {
+    font-size: clamp(1.75rem, 6vw, 2rem);
+  }
+
+  .container {
+    padding: 0 var(--spacing-sm);
+  }
+
+  .hero-title {
+    font-size: clamp(2.5rem, 8vw, 3rem) !important;
+  }
+}
+
+@media (max-width: 480px) {
+
+  /* Phones */
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+}

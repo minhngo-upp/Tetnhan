@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Góc Nhàn | Kiến Thức & Mẹo Chuẩn Bị Tết</title>
+    <meta name="description"
+        content="Chia sẻ kiến thức Tết, cách dọn nhà cuối năm đúng phong tục, mâm cỗ 3 miền và ý nghĩa mâm ngũ quả truyền thống.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <style>
+        .blog-hero {
+            background: var(--bg-cream);
+            padding: var(--spacing-xxl) 0;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-xl);
+        }
+
+        @media (max-width: 992px) {
+            .blog-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .blog-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition-normal);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .blog-card-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform var(--transition-normal);
+        }
+
+        .blog-card:hover .blog-card-img {
+            transform: scale(1.05);
+        }
+
+        .blog-card-content {
+            padding: var(--spacing-md);
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .blog-meta {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: var(--spacing-xs);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .blog-title {
+            font-size: 1.25rem;
+            margin-bottom: var(--spacing-sm);
+            font-weight: 600;
+        }
+
+        .blog-title a {
+            color: var(--text-dark);
+        }
+
+        .blog-title a:hover {
+            color: var(--primary-red);
+        }
+
+        .blog-excerpt {
+            flex-grow: 1;
+            font-size: 0.95rem;
+            color: var(--text-light);
+            margin-bottom: var(--spacing-md);
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .blog-readmore {
+            font-weight: 600;
+            color: var(--primary-gold);
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .blog-readmore:hover {
+            color: var(--primary-red);
+        }
+
+        .blog-readmore::after {
+            content: '→';
+            transition: transform 0.2s;
+        }
+
+        .blog-readmore:hover::after {
+            transform: translateX(5px);
+        }
+
+        .category-filter {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-sm);
+            margin-top: var(--spacing-md);
+            flex-wrap: wrap;
+        }
+
+        .cat-btn {
+            padding: 0.5rem 1rem;
+            border-radius: 999px;
+            border: 1px solid var(--border-color);
+            background: var(--white);
+            color: var(--text-light);
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .cat-btn:hover,
+        .cat-btn.active {
+            background: var(--primary-red);
+            color: var(--white);
+            border-color: var(--primary-red);
+        }
+    </style>
+</head>
+
+<body style="background-color: var(--bg-cream);">
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container nav-container">
+            <nav class="nav-menu" style="flex: 1; justify-content: flex-end; gap: var(--spacing-md);">
+                <a href="index.html" class="nav-link">Trang Chủ</a>
+                <a href="services.html" class="nav-link">Dịch Vụ</a>
+                <a href="quiz.html" class="nav-link">Thiết Kế Tết</a>
+            </nav>
+
+            <a href="index.html" class="logo" style="flex: 1; text-align: center;">
+                TẾT NHÀN
+                <span>Góc Kiến Thức</span>
+            </a>
+
+            <nav class="nav-menu" style="flex: 1; justify-content: flex-start; gap: var(--spacing-md);">
+                <div class="nav-item-dropdown">
+                    <a href="#" class="nav-link active">Về Thương Hiệu</a>
+                    <div class="dropdown-menu">
+                        <a href="about.html" class="dropdown-item">Câu Chuyện Nghề</a>
+                        <a href="blog.html" class="dropdown-item">Góc Nhàn</a>
+                    </div>
+                </div>
+                <a href="booking.html" class="nav-link" style="color: var(--primary-red); font-weight: 600;">Liên Hệ</a>
+            </nav>
+
+            <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
+        </div>
+    </header>
+
+    <main style="padding-top: 80px;">
+        <!-- Blog Hero -->
+        <section class="blog-hero">
+            <div class="container">
+                <h1 style="margin-bottom: var(--spacing-sm);">Góc Nhàn</h1>
+                <p style="font-size: 1.25rem; max-width: 600px; margin: 0 auto; color: var(--text-light);">
+                    Nơi chia sẻ kiến thức, mẹo vặt và những câu chuyện đẹp về văn hóa Tết cổ truyền Việt Nam.
+                </p>
+
+                <div class="category-filter">
+                    <button class="cat-btn active">Tất cả</button>
+                    <button class="cat-btn">Kiến thức Tết</button>
+                    <button class="cat-btn">Mẹo dọn nhà</button>
+                    <button class="cat-btn">Ẩm thực 3 miền</button>
+                    <button class="cat-btn">Doanh nghiệp</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog Listing -->
+        <section class="section">
+            <div class="container">
+                <div class="blog-grid">
+
+                    <!-- Article 1 -->
+                    <article class="blog-card">
+                        <div style="overflow: hidden;">
+                            <img src="images/tet_intro_art_1771730642642.png" alt="Cách dọn nhà cuối năm đúng phong tục"
+                                class="blog-card-img">
+                        </div>
+                        <div class="blog-card-content">
+                            <div class="blog-meta">
+                                <span style="color: var(--primary-red); font-weight: 600;">Mẹo dọn nhà</span>
+                                <span>15 Th1, 2026</span>
+                            </div>
+                            <h3 class="blog-title"><a href="#">Cách dọn nhà cuối năm đúng phong tục, rước tài lộc</a>
+                            </h3>
+                            <p class="blog-excerpt">
+                                Dọn nhà trước Tết không chỉ đơn thuần là làm sạch không gian sống mà còn mang ý nghĩa
+                                xua đuổi những điều xui xẻo của năm cũ, đón may mắn, tài lộc trong năm mới. Hãy cùng Tết
+                                Nhàn tìm hiểu trình tự dọn dẹp chuẩn phong thủy.
+                            </p>
+                            <a href="#" class="blog-readmore">Đọc tiếp</a>
+                        </div>
+                    </article>
+
+                    <!-- Article 2 -->
+                    <article class="blog-card">
+                        <div style="overflow: hidden;">
+                            <img src="images/tet_elite_service_1771730705463.png" alt="Mâm cỗ 3 miền"
+                                class="blog-card-img">
+                        </div>
+                        <div class="blog-card-content">
+                            <div class="blog-meta">
+                                <span style="color: var(--primary-red); font-weight: 600;">Ẩm thực 3 miền</span>
+                                <span>12 Th1, 2026</span>
+                            </div>
+                            <h3 class="blog-title"><a href="#">Tinh hoa ẩm thực Tết: Khám phá mâm cỗ 3 miền Bắc - Trung
+                                    - Nam</a></h3>
+                            <p class="blog-excerpt">
+                                Dù có bao nhiêu thăng trầm, mâm cỗ Tết vẫn luôn là linh hồn của những ngày đầu năm mới.
+                                Đặc sắc hơn cả là sự khác biệt tinh tế trong văn hóa ẩm thực của ba miền Bắc, Trung,
+                                Nam.
+                            </p>
+                            <a href="#" class="blog-readmore">Đọc tiếp</a>
+                        </div>
+                    </article>
+
+                    <!-- Article 3 -->
+                    <article class="blog-card">
+                        <div style="overflow: hidden;">
+                            <img src="images/tet_testimonial_1771730741827.png" alt="Ý nghĩa mâm ngũ quả"
+                                class="blog-card-img">
+                        </div>
+                        <div class="blog-card-content">
+                            <div class="blog-meta">
+                                <span style="color: var(--primary-red); font-weight: 600;">Kiến thức Tết</span>
+                                <span>08 Th1, 2026</span>
+                            </div>
+                            <h3 class="blog-title"><a href="#">Bí mật đằng sau mâm ngũ quả truyền thống và cách chưng
+                                    đẹp mắt</a></h3>
+                            <p class="blog-excerpt">
+                                Tùy theo quan niệm của từng vùng miền mà mâm ngũ quả lại được trưng bày khác nhau. Cùng
+                                khám phá ý nghĩa của từng loại trái cây mang trên mình ước vọng "Cầu sung vừa đủ xài".
+                            </p>
+                            <a href="#" class="blog-readmore">Đọc tiếp</a>
+                        </div>
+                    </article>
+
+                    <!-- Article 4 -->
+                    <article class="blog-card">
+                        <div style="overflow: hidden;">
+                            <img src="images/tet_business_gifts_1771730679615.png" alt="Quà Tết Doanh Nghiệp"
+                                class="blog-card-img">
+                        </div>
+                        <div class="blog-card-content">
+                            <div class="blog-meta">
+                                <span style="color: var(--primary-red); font-weight: 600;">Doanh nghiệp</span>
+                                <span>05 Th1, 2026</span>
+                            </div>
+                            <h3 class="blog-title"><a href="#">Xu hướng quà Tết doanh nghiệp 2026: Cá nhân hóa lên
+                                    ngôi</a></h3>
+                            <p class="blog-excerpt">
+                                Những giỏ quà công nghiệp đang dần nhường chỗ cho các thiết kế mang đậm tính cá nhân hóa
+                                và thông điệp văn hóa của mỗi thương hiệu.
+                            </p>
+                            <a href="#" class="blog-readmore">Đọc tiếp</a>
+                        </div>
+                    </article>
+
+                    <!-- Article 5 -->
+                    <article class="blog-card">
+                        <div style="overflow: hidden;">
+                            <img src="images/tet_family_service_1771730659706.png" alt="Trang trí nhà cửa"
+                                class="blog-card-img"> <!-- Placeholder -->
+                        </div>
+                        <div class="blog-card-content">
+                            <div class="blog-meta">
+                                <span style="color: var(--primary-red); font-weight: 600;">Kiến thức Tết</span>
+                                <span>28 Th12, 2025</span>
+                            </div>
+                            <h3 class="blog-title"><a href="#">Cách chọn bình hoa rước tài lộc chơi Tết mà bạn chưa
+                                    biết</a></h3>
+                            <p class="blog-excerpt">
+                                Không chỉ mang đến sắc xuân rực rỡ, những bình hoa tinh tế còn là vật phẩm phong thủy
+                                cải thiện sinh khí cho ngôi nhà...
+                            </p>
+                            <a href="#" class="blog-readmore">Đọc tiếp</a>
+                        </div>
+                    </article>
+
+                </div>
+
+                <!-- Pagination (Demo) -->
+                <div style="text-align: center; margin-top: var(--spacing-xl);">
+                    <div style="display: inline-flex; gap: 5px;">
+                        <a href="#" class="btn btn-primary"
+                            style="padding: 0.5rem 1rem; background: var(--border-color); color: var(--text-dark);">Trước</a>
+                        <a href="#" class="btn btn-primary" style="padding: 0.5rem 1rem;">1</a>
+                        <a href="#" class="btn btn-outline-gold"
+                            style="padding: 0.5rem 1rem; border-color: var(--border-color); color: var(--text-dark);">2</a>
+                        <a href="#" class="btn btn-outline-gold"
+                            style="padding: 0.5rem 1rem; border-color: var(--border-color); color: var(--text-dark);">3</a>
+                        <a href="#" class="btn btn-outline-gold"
+                            style="padding: 0.5rem 1rem; border-color: var(--border-color); color: var(--text-dark);">Tiếp</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom" style="margin-top: 0; border-top: none;">
+                <p>&copy; 2026 Tết Nhàn.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>
