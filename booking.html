@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đặt Lịch Dịch Vụ | Tết Nhàn</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <style>
+        .booking-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: var(--spacing-xl);
+        }
+
+        @media (max-width: 992px) {
+            .booking-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .booking-form {
+            background: var(--white);
+            padding: var(--spacing-xl);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .booking-summary {
+            background: var(--primary-red);
+            color: var(--white);
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-lg);
+            position: sticky;
+            top: 100px;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: var(--spacing-sm);
+            padding-bottom: var(--spacing-sm);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .step-indicator {
+            display: flex;
+            margin-bottom: var(--spacing-xl);
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: var(--spacing-sm);
+        }
+
+        .step-item {
+            flex: 1;
+            text-align: center;
+            color: var(--text-light);
+            font-weight: 500;
+            position: relative;
+        }
+
+        .step-item.active {
+            color: var(--primary-red);
+            font-weight: 600;
+        }
+
+        .step-item.active::after {
+            content: '';
+            position: absolute;
+            bottom: calc(-1 * var(--spacing-sm) - 2px);
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--primary-red);
+        }
+
+        .radio-card {
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-sm);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            transition: all 0.2s;
+        }
+
+        .radio-card:hover {
+            border-color: var(--primary-gold);
+            background: var(--bg-cream);
+        }
+
+        .radio-card input {
+            display: none;
+        }
+
+        .radio-card.selected {
+            border-color: var(--primary-red);
+            background: rgba(139, 30, 45, 0.05);
+            box-shadow: 0 0 0 1px var(--primary-red);
+        }
+
+        .radio-card .custom-radio {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--border-color);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .radio-card.selected .custom-radio::after {
+            content: '';
+            width: 10px;
+            height: 10px;
+            background: var(--primary-red);
+            border-radius: 50%;
+        }
+
+        /* Addon checkbox styling */
+        .addon-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--spacing-sm);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--spacing-sm);
+            cursor: pointer;
+        }
+
+        .addon-card:hover {
+            border-color: var(--primary-gold);
+        }
+
+        .addon-card input {
+            margin-right: var(--spacing-sm);
+        }
+    </style>
+</head>
+
+<body style="background-color: var(--bg-cream);">
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">❁</span> Tết Nhàn
+            </a>
+            <nav class="nav-links" id="nav-links">
+                <a href="index.html" class="nav-link">Trang Chủ</a>
+                <a href="services.html" class="nav-link">Dịch Vụ</a>
+                <a href="quiz.html" class="nav-link">Thiết Kế Tết</a>
+                <a href="blog.html" class="nav-link">Góc Nhàn</a>
+                <a href="about.html" class="nav-link">Về Chúng Tôi</a>
+            </nav>
+            <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
+        </div>
+    </header>
+
+    <main style="padding-top: 120px; padding-bottom: var(--spacing-xxl);">
+        <div class="container">
+            <div class="booking-layout">
+
+                <!-- Booking Form Left -->
+                <div class="booking-form">
+                    <div class="step-indicator">
+                        <div class="step-item active">1. Chọn Gói</div>
+                        <div class="step-item">2. Thông Tin</div>
+                        <div class="step-item">3. Thanh Toán</div>
+                    </div>
+
+                    <form id="booking-form">
+                        <!-- Step 1: Package Selection -->
+                        <div id="step-1">
+                            <h3 style="margin-bottom: var(--spacing-md);">Gói dịch vụ chính</h3>
+                            <div class="grid grid-cols-2 sm:grid-cols-1 gap-sm"
+                                style="margin-bottom: var(--spacing-lg);">
+                                <label class="radio-card">
+                                    <input type="radio" name="plan" value="family_premium" data-price="5800000"
+                                        data-name="Tết Nhàn Family (Premium)">
+                                    <div class="custom-radio"></div>
+                                    <div>
+                                        <strong style="display:block;">Tết Nhàn Family (Premium)</strong>
+                                        <span style="font-size: 0.85rem; color: var(--text-light);">5.800.000đ</span>
+                                    </div>
+                                </label>
+
+                                <label class="radio-card">
+                                    <input type="radio" name="plan" value="family_basic" data-price="2500000"
+                                        data-name="Tết Nhàn Family (Basic)">
+                                    <div class="custom-radio"></div>
+                                    <div>
+                                        <strong style="display:block;">Tết Nhàn Family (Basic)</strong>
+                                        <span style="font-size: 0.85rem; color: var(--text-light);">2.500.000đ</span>
+                                    </div>
+                                </label>
+
+                                <label class="radio-card">
+                                    <input type="radio" name="plan" value="biz_basic" data-price="10000000"
+                                        data-name="Tết Nhàn Business (Basic)">
+                                    <div class="custom-radio"></div>
+                                    <div>
+                                        <strong style="display:block;">Tết Nhàn Business (Basic)</strong>
+                                        <span style="font-size: 0.85rem; color: var(--text-light);">Từ
+                                            10.000.000đ</span>
+                                    </div>
+                                </label>
+
+                                <label class="radio-card">
+                                    <input type="radio" name="plan" value="care" data-price="3500000"
+                                        data-name="Tết Nhàn Care">
+                                    <div class="custom-radio"></div>
+                                    <div>
+                                        <strong style="display:block;">Tết Nhàn Care</strong>
+                                        <span style="font-size: 0.85rem; color: var(--text-light);">3.500.000đ</span>
+                                    </div>
+                                </label>
+                            </div>
+
+                            <h3 style="margin-bottom: var(--spacing-md);">Dịch vụ bổ sung (Add-ons)</h3>
+                            <label class="addon-card">
+                                <div>
+                                    <input type="checkbox" name="addons" value="cay_canh" data-price="1500000"
+                                        data-name="Nâng cấp chậu Mai/Đào cỡ lớn">
+                                    <span>Nâng cấp chậu Mai/Đào cỡ lớn</span>
+                                </div>
+                                <strong>+1.500.000đ</strong>
+                            </label>
+                            <label class="addon-card">
+                                <div>
+                                    <input type="checkbox" name="addons" value="don_dep" data-price="800000"
+                                        data-name="Thêm 1 buổi dọn dẹp mùng 3">
+                                    <span>Thêm 1 buổi dọn dẹp trọn gói mùng 3</span>
+                                </div>
+                                <strong>+800.000đ</strong>
+                            </label>
+
+                            <div style="text-align: right; margin-top: var(--spacing-xl);">
+                                <button type="button" class="btn btn-primary" id="btn-to-step-2">Tiếp theo</button>
+                            </div>
+                        </div>
+
+                        <!-- Step 2: Information -->
+                        <div id="step-2" style="display: none;">
+                            <h3 style="margin-bottom: var(--spacing-md);">Thông tin liên hệ & Thời gian</h3>
+
+                            <div class="grid grid-cols-2 gap-sm">
+                                <div class="form-group">
+                                    <label class="form-label">Họ và tên *</label>
+                                    <input type="text" class="form-control" placeholder="Nguyễn Văn A" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Số điện thoại *</label>
+                                    <input type="tel" class="form-control" placeholder="090 123 4567" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Địa chỉ thực hiện dịch vụ *</label>
+                                <input type="text" class="form-control"
+                                    placeholder="Số nhà, Tên đường, Quận/Huyện, Thành phố" required>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-sm">
+                                <div class="form-group">
+                                    <label class="form-label">Ngày thực hiện (dự kiến) *</label>
+                                    <input type="date" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Giờ thực hiện</label>
+                                    <select class="form-control">
+                                        <option value="">-- Chọn khung giờ --</option>
+                                        <option value="sáng">Sáng (08:00 - 12:00)</option>
+                                        <option value="chiều">Chiều (13:00 - 17:00)</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Ghi chú thêm</label>
+                                <textarea class="form-control" rows="3"
+                                    placeholder="Ví dụ: Nhà có chó mèo, cần lưu ý khu vực ban công..."></textarea>
+                            </div>
+
+                            <div style="display: flex; justify-content: space-between; margin-top: var(--spacing-xl);">
+                                <button type="button" class="btn btn-secondary" onclick="changeStep(1)">Quay
+                                    lại</button>
+                                <button type="button" class="btn btn-primary" id="btn-to-step-3">Tiếp tục thanh
+                                    toán</button>
+                            </div>
+                        </div>
+
+                        <!-- Step 3: Payment Mock -->
+                        <div id="step-3" style="display: none;">
+                            <h3 style="margin-bottom: var(--spacing-md);">Phương thức thanh toán</h3>
+
+                            <p style="margin-bottom: var(--spacing-md); color: var(--text-light);">Vui lòng chọn phương
+                                thức thanh toán để hoàn tất đặt lịch.</p>
+
+                            <div class="grid grid-cols-1 gap-sm" style="margin-bottom: var(--spacing-lg);">
+                                <label class="radio-card selected">
+                                    <input type="radio" name="payment" value="transfer" checked>
+                                    <div class="custom-radio"></div>
+                                    <div>
+                                        <strong style="display:block;">Chuyển khoản ngân hàng (Quét mã QR)</strong>
+                                    </div>
+                                </label>
+
+                                <label class="radio-card">
+                                    <input type="radio" name="payment" value="credit">
+                                    <div class="custom-radio"></div>
+                                    <div>
+                                        <strong style="display:block;">Thẻ Tín dụng / Ghi nợ</strong>
+                                    </div>
+                                </label>
+
+                                <label class="radio-card">
+                                    <input type="radio" name="payment" value="momo">
+                                    <div class="custom-radio"></div>
+                                    <div>
+                                        <strong style="display:block;">Ví MoMo / ZaloPay</strong>
+                                    </div>
+                                </label>
+                            </div>
+
+                            <div
+                                style="background: var(--bg-cream); padding: var(--spacing-md); border-radius: var(--radius-md); text-align: center;">
+                                <p>Chi tiết thanh toán sẽ được hiển thị ở bước tiếp theo.</p>
+                            </div>
+
+                            <div style="display: flex; justify-content: space-between; margin-top: var(--spacing-xl);">
+                                <button type="button" class="btn btn-secondary" onclick="changeStep(2)">Quay
+                                    lại</button>
+                                <button type="submit" class="btn btn-primary"
+                                    style="background-color: var(--primary-gold); color: var(--primary-red); font-weight: bold; font-size: 1.1rem;">HOÀN
+                                    TẤT ĐẶT LỊCH</button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+
+                <!-- Order Summary Right -->
+                <div>
+                    <div class="booking-summary">
+                        <h3 style="color: var(--primary-gold); margin-bottom: var(--spacing-lg);">Chi tiết đơn hàng</h3>
+
+                        <div class="summary-item">
+                            <span id="summary-plan-name">Chưa chọn gói</span>
+                            <span id="summary-plan-price">0đ</span>
+                        </div>
+
+                        <div id="summary-addons">
+                            <!-- Addons injected here -->
+                        </div>
+
+                        <div class="summary-item"
+                            style="border-top: 1px dotted rgba(255,255,255,0.4); margin-top: var(--spacing-md); padding-top: var(--spacing-md); border-bottom: none; font-size: 1.25rem;">
+                            <strong>Tổng cộng</strong>
+                            <strong style="color: var(--primary-gold);" id="summary-total">0đ</strong>
+                        </div>
+
+                        <p style="font-size: 0.8rem; margin-top: var(--spacing-md); opacity: 0.8; text-align: center;">
+                            Bằng việc đặt lịch, bạn đồng ý với Điều khoản dịch vụ và Chính sách hủy của Tết Nhàn.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom" style="margin-top: 0; border-top: none;">
+                <p>&copy; 2026 Tết Nhàn.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/booking.js"></script>
+</body>
+
+</html>
